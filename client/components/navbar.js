@@ -4,27 +4,14 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
 
-const Navbar = ({handleClick, isLoggedIn}) => (
-  <div>
-    <h1>BOILERMAKER</h1>
-    <nav>
-      {isLoggedIn ? (
-        <div>
-          {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
-        </div>
-      ) : (
-        <div>
-          {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
-        </div>
-      )}
-    </nav>
-    <hr />
+const Navbar = () => (
+  <div style={{textAlign: 'center'}}>
+    <h1 style={{fontFamily: 'Beth Ellen'}}>Handwritten</h1>
+    <h3 style={{fontWeight: '300'}}>
+      A project that uses brain.js and the MNIST database to create a simple
+      machine learning application in JavaScript
+    </h3>
+    <hr style={{color: 'grey'}} />
   </div>
 )
 
