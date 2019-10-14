@@ -8,7 +8,9 @@ const Navbar = () => (
       backgroundColor: '#fbfbfb',
       display: 'flex',
       justifyContent: 'flex-start',
-      alignItems: 'flex-end'
+      alignItems: 'flex-end',
+      boxShadow:
+        '0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1)'
     }}
   >
     <a

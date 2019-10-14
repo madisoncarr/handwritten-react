@@ -66,7 +66,9 @@ class App extends React.Component {
               width: '60%',
               backgroundColor: '#fbfbfb',
               height: 'auto',
-              marginTop: '20%'
+              marginTop: '20%',
+              boxShadow:
+                '0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1)'
             }}
           >
             <div>
