@@ -1,9 +1,8 @@
 import mnist from 'mnist'
 import brain from 'brain.js'
-import learningData from '/Users/cynicalbrunette/Documents/projects/fullstack_immersive/fullstack_sr/handwritten/trainedModel.json'
+import learningData from './../trainedModel.json'
 import React from 'react'
-
-import {Navbar} from './components'
+import {Navbar, ImageGenerator} from './components'
 
 class App extends React.Component {
   constructor() {
@@ -30,12 +29,12 @@ class App extends React.Component {
 
   componentDidMount() {
     const ctx = this.canvasRef.current.getContext('2d')
-    ctx.fillRect(0, 0, 200, 200)
+    ctx.fillRect(0, 0, 100, 100)
   }
   componentDidUpdate(prevProps, prevState) {
     const ctx = this.canvasRef.current.getContext('2d')
     if (prevState.image !== this.state.image) {
-      mnist.draw(this.state.image, ctx, 86, 86)
+      mnist.draw(this.state.image, ctx, 50, 50)
     }
   }
 
@@ -49,49 +48,44 @@ class App extends React.Component {
     const numberGuessed = net.run(this.state.image)
     console.log('Number guessed: ', this.toNumber(numberGuessed), numberGuessed)
     return (
-      <>
+      <React.Fragment>
         <Navbar />
-        <div style={{display: 'flex', justifyContent: 'space between'}}>
-          <div
-            style={{
-              marginLeft: '10rem',
-              textAlign: 'center',
-              marginTop: '5rem'
-            }}
-          >
-            <h3>Random Image Generated: </h3>
-            <canvas
-              id="myCanvas"
-              ref={this.canvasRef}
-              width={200}
-              height={200}
-              style={{border: 'solid black 1px', borderRadius: '15px'}}
-            />
-            <button
-              className="number-generator-button"
-              type="button"
-              onClick={this.handleNewRandomNumber}
-            >
-              Generate Random Number
-            </button>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-around',
+            alignItems: 'center'
+          }}
+        >
+          <div>
+            <h1>Handwritten</h1>
+            <h6>a neural network made with the mnist data set and brain.js</h6>
           </div>
           <div
             style={{
-              marginRight: '10rem',
-              marginLeft: '10rem',
-              textAlign: 'center',
-              marginTop: '5rem'
+              width: '60%',
+              backgroundColor: '#fbfbfb',
+              height: 'auto',
+              marginTop: '20%'
             }}
           >
-            <h3>Number Guessed by Our Brain (aka Jimmy Newtron): </h3>
-            <h1 style={{fontSize: '60px'}}>
-              {this.toNumber(numberGuessed) >= 0
-                ? this.toNumber(numberGuessed)
-                : ' '}
-            </h1>
+            <div>
+              <ImageGenerator
+                handleNewRandomNumber={this.handleNewRandomNumber}
+                canvasRef={this.canvasRef}
+              />
+            </div>
+            <div>
+              <h3>Number Guessed by Our Neural Network: </h3>
+              <h1 style={{fontSize: '60px'}}>
+                {this.toNumber(numberGuessed) >= 0
+                  ? this.toNumber(numberGuessed)
+                  : ' '}
+              </h1>
+            </div>
           </div>
         </div>
-      </>
+      </React.Fragment>
     )
   }
 }
