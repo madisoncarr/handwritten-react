@@ -2,7 +2,7 @@ import mnist from 'mnist'
 import brain from 'brain.js'
 import learningData from './../trainedModel.json'
 import React from 'react'
-import {Navbar, ImageGenerator} from './components'
+import {Navbar, Main} from './components'
 
 class App extends React.Component {
   constructor() {
@@ -48,46 +48,17 @@ class App extends React.Component {
     const numberGuessed = net.run(this.state.image)
     console.log('Number guessed: ', this.toNumber(numberGuessed), numberGuessed)
     return (
-      <React.Fragment>
+      <div
+        style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}
+      >
         <Navbar />
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-around',
-            alignItems: 'center'
-          }}
-        >
-          <div>
-            <h1>Handwritten</h1>
-            <h6>a neural network made with the mnist data set and brain.js</h6>
-          </div>
-          <div
-            style={{
-              width: '60%',
-              backgroundColor: '#fbfbfb',
-              height: 'auto',
-              marginTop: '20%',
-              boxShadow:
-                '0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1)'
-            }}
-          >
-            <div>
-              <ImageGenerator
-                handleNewRandomNumber={this.handleNewRandomNumber}
-                canvasRef={this.canvasRef}
-              />
-            </div>
-            <div>
-              <h3>Number Guessed by Our Neural Network: </h3>
-              <h1 style={{fontSize: '60px'}}>
-                {this.toNumber(numberGuessed) >= 0
-                  ? this.toNumber(numberGuessed)
-                  : ' '}
-              </h1>
-            </div>
-          </div>
-        </div>
-      </React.Fragment>
+        <Main
+          handleNewRandomNumber={this.handleNewRandomNumber}
+          canvasRef={this.canvasRef}
+          toNumber={this.toNumber}
+          numberGuessed={numberGuessed}
+        />
+      </div>
     )
   }
 }
