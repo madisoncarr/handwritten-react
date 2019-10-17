@@ -34,7 +34,7 @@ class App extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     const ctx = this.canvasRef.current.getContext('2d')
     if (prevState.image !== this.state.image) {
-      mnist.draw(this.state.image, ctx, 50, 50)
+      mnist.draw(this.state.image, ctx, 55, 75)
     }
   }
 
