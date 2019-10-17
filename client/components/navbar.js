@@ -16,14 +16,14 @@ const Navbar = () => (
         marginLeft: '5%',
         marginRight: '5%',
         textTransform: 'uppercase',
-        fontSize: '0.7rem',
+        fontSize: '1.2rem',
         paddingTop: '1%'
       }}
     >
       Confidence Predictions
     </a>
     <a
-      style={{textTransform: 'uppercase', fontSize: '0.7rem', paddingTop: '1%'}}
+      style={{textTransform: 'uppercase', fontSize: '1.2rem', paddingTop: '1%'}}
     >
       About
     </a>

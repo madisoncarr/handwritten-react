@@ -18,6 +18,7 @@ const ImageGenerator = props => {
         style={{
           marginTop: '2.5vh',
           marginLeft: '1.5vw',
+          marginBottom: '1.2rem',
           backgroundColor: 'black'
         }}
       />
@@ -27,8 +28,8 @@ const ImageGenerator = props => {
         onClick={props.handleNewRandomNumber}
         style={{
           fontSize: '0.5rem',
-          height: '1.5rem',
-          padding: '0 0.45rem',
+          height: '2.7rem',
+          padding: '0.7rem 0.5rem 0.7rem',
           marginLeft: '1.5vw'
         }}
       >
