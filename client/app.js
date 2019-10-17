@@ -1,9 +1,8 @@
 import mnist from 'mnist'
 import brain from 'brain.js'
-import learningData from '/Users/cynicalbrunette/Documents/projects/fullstack_immersive/fullstack_sr/handwritten/trainedModel.json'
+import learningData from './../trainedModel.json'
 import React from 'react'
-
-import {Navbar} from './components'
+import {Navbar, Main} from './components'
 
 class App extends React.Component {
   constructor() {
@@ -30,12 +29,12 @@ class App extends React.Component {
 
   componentDidMount() {
     const ctx = this.canvasRef.current.getContext('2d')
-    ctx.fillRect(0, 0, 200, 200)
+    ctx.fillRect(0, 0, 100, 100)
   }
   componentDidUpdate(prevProps, prevState) {
     const ctx = this.canvasRef.current.getContext('2d')
     if (prevState.image !== this.state.image) {
-      mnist.draw(this.state.image, ctx, 86, 86)
+      mnist.draw(this.state.image, ctx, 55, 75)
     }
   }
 
@@ -49,49 +48,17 @@ class App extends React.Component {
     const numberGuessed = net.run(this.state.image)
     console.log('Number guessed: ', this.toNumber(numberGuessed), numberGuessed)
     return (
-      <>
+      <div
+        style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}
+      >
         <Navbar />
-        <div style={{display: 'flex', justifyContent: 'space between'}}>
-          <div
-            style={{
-              marginLeft: '10rem',
-              textAlign: 'center',
-              marginTop: '5rem'
-            }}
-          >
-            <h3>Random Image Generated: </h3>
-            <canvas
-              id="myCanvas"
-              ref={this.canvasRef}
-              width={200}
-              height={200}
-              style={{border: 'solid black 1px', borderRadius: '15px'}}
-            />
-            <button
-              className="number-generator-button"
-              type="button"
-              onClick={this.handleNewRandomNumber}
-            >
-              Generate Random Number
-            </button>
-          </div>
-          <div
-            style={{
-              marginRight: '10rem',
-              marginLeft: '10rem',
-              textAlign: 'center',
-              marginTop: '5rem'
-            }}
-          >
-            <h3>Number Guessed by Our Brain (aka Jimmy Newtron): </h3>
-            <h1 style={{fontSize: '60px'}}>
-              {this.toNumber(numberGuessed) >= 0
-                ? this.toNumber(numberGuessed)
-                : ' '}
-            </h1>
-          </div>
-        </div>
-      </>
+        <Main
+          handleNewRandomNumber={this.handleNewRandomNumber}
+          canvasRef={this.canvasRef}
+          toNumber={this.toNumber}
+          numberGuessed={numberGuessed}
+        />
+      </div>
     )
   }
 }

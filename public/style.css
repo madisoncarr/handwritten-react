@@ -1,27 +1,28 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
 html {
   height: 100%;
-  font-family: 'Shadows Into Light';
+  font-size: 62.5%;
+  font-family: 'Montserrat', sans-serif;
 }
 
 body {
-  font-family: sans-serif;
-  color: #3c153b;
-  background: linear-gradient();
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  color: black;
 }
 
 a {
   text-decoration: none;
 }
 
-label {
-  display: block;
+a:hover {
+  color: #72796c;
 }
 
-nav a {
-  display: inline-block;
-  margin: 1em;
+label {
+  display: block;
 }
 
 form div {
@@ -32,9 +33,10 @@ form div {
 .number-generator-button {
   margin-top: 1rem;
   height: 3rem;
-  background-color: #89bd9e;
-  color: #3c153b;
-  border-radius: 10px;
+  background-color: white;
+  color: black;
+  border: solid black 1px;
+  text-transform: uppercase;
 }
 
 .number-generator-button:focus {
@@ -42,6 +44,6 @@ form div {
 }
 
 .number-generator-button:hover {
-  background-color: #3c153b;
-  color: #89bd9e;
+  background-color: black;
+  color: white;
 }
