@@ -8,12 +8,14 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      image: []
+      image: [],
+      predictionsOpen: false
     }
     this.canvasRef = React.createRef()
     this.toNumber = this.toNumber.bind(this)
     this.randomNumberGenerator = this.randomNumberGenerator.bind(this)
     this.handleNewRandomNumber = this.handleNewRandomNumber.bind(this)
+    this.handlePredictionOpen = this.handlePredictionOpen.bind(this)
   }
 
   randomNumberGenerator() {
@@ -25,6 +27,15 @@ class App extends React.Component {
     console.log('correct number: ', randomNumber)
     const digit = mnist[randomNumber].get()
     this.setState({image: digit})
+  }
+
+  handlePredictionOpen() {
+    console.log('predictionsOpen: ', this.state.predictionsOpen)
+    if (this.state.predictionsOpen) {
+      this.setState({predictionsOpen: false})
+    } else {
+      this.setState({predictionsOpen: true})
+    }
   }
 
   componentDidMount() {
@@ -51,7 +62,10 @@ class App extends React.Component {
       <div
         style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}
       >
-        <Navbar />
+        <Navbar
+          handlePredictionOpen={this.handlePredictionOpen}
+          predictionsOpen={this.state.predictionsOpen}
+        />
         <Main
           handleNewRandomNumber={this.handleNewRandomNumber}
           canvasRef={this.canvasRef}

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Navbar = () => (
+const Navbar = props => (
   <div
     style={{
       width: '100%',
@@ -11,7 +11,8 @@ const Navbar = () => (
       alignItems: 'center'
     }}
   >
-    <a
+    <div
+      id="dropdown"
       style={{
         marginLeft: '5%',
         marginRight: '5%',
@@ -19,9 +20,15 @@ const Navbar = () => (
         fontSize: '1.2rem',
         paddingTop: '1%'
       }}
+      onClick={() => props.handlePredictionOpen(this)}
     >
       Confidence Predictions
-    </a>
+      <ul>
+        <li>Stuff</li>
+        <li>Stuff</li>
+        <li>Stuff</li>
+      </ul>
+    </div>
     <a
       style={{textTransform: 'uppercase', fontSize: '1.2rem', paddingTop: '1%'}}
     >
